@@ -39,13 +39,11 @@ export default function ContactsProvider({ children, currentUserId }) {
 		return { ...convo, receivers, selected, messages }
 	})
 
-	const sendMessage = useCallback(
-		(receivers, message) => {
-			socket.emit("send-message", { receivers, message })
-
+	const addMessage = useCallback(
+		({ receivers, sender, message }) => {
 			setConversations(prevConvos => {
 				let isNewConvo = true
-				const newMessage = { sender: currentUserId, message }
+				const newMessage = { sender: sender, message }
 				const newConvos = prevConvos.map(convo => {
 					if (arrayEqual(convo.receivers, receivers)) {
 						isNewConvo = false
@@ -63,16 +61,20 @@ export default function ContactsProvider({ children, currentUserId }) {
 				else return newConvos
 			})
 		},
-		[setConversations, currentUserId, socket]
+		[setConversations]
 	)
+
+	function sendMessage(receivers, message) {
+		socket.emit("send-message", { receivers, message })
+		addMessage({ receivers, message, sender: currentUserId })
+	}
 
 	useEffect(() => {
 		if (socket == null) return
 
-		socket.on("receive-message", sendMessage)
-
+		socket.on("receive-message", addMessage)
 		return () => socket.off("receive-message")
-	}, [socket, sendMessage])
+	}, [socket, addMessage])
 
 	return (
 		<ConversationsContext.Provider

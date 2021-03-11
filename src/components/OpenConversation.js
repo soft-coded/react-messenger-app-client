@@ -20,13 +20,15 @@ export default function OpenConversation() {
 					{selectedConversation.messages.map((message, i) => (
 						<div
 							className={`my-1 d-flex flex-column ${
-								message.fromMe ? "align-self-end" : ""
+								message.fromMe
+									? "align-self-end align-items-end"
+									: "align-items-start"
 							}`}
 							key={i}
 						>
 							<div
-								className={`rounded px-2 py-1 ${
-									message.fromMe ? "bg-primary text-light" : "border"
+								className={`rounded px-2 py-1 text-light ${
+									message.fromMe ? "bg-primary" : "bg-secondary"
 								}`}
 							>
 								{message.message}
