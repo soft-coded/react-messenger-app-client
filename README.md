@@ -23,24 +23,21 @@ This repository is one of the two required to run this app (client-version).
 
 ```
     git clone https://github.com/soft-coded/react-messenger-app-client.git
-
 ```
 3. Clone the [server repository](https://github.com/soft-coded/react-messenger-app-server)
 
 ```
-  git clone https://github.com/soft-coded/react-messenger-app-server.git
+    git clone https://github.com/soft-coded/react-messenger-app-server.git
 ```
 4. Navigate to the react-messenger-app-client folder
 
 ```
     cd react-messenger-app-client
-
 ```    
 5. Run the app
 
 ```
     npm start
-
  ``` 
 6. Navigate to the react-messenger-app-server folder
 
