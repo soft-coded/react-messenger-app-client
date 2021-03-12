@@ -17,7 +17,7 @@ This repository is one of the two required to run this app (client-version).
 
 ## Setup Instructions
 
-1. Make sure you have the latest version of node.js and npm installed. [You can check for newer versions on the official node.js website.](https://nodejs.org/en/).
+1. Make sure you have the latest version of node.js and npm installed. [You can check for newer versions on the official node.js website.](https://nodejs.org/en/)
 
 2. Clone the repository
 
